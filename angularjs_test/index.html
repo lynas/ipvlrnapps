@@ -6,14 +6,12 @@
     <script type="text/javascript" src="angular.min.js"></script>
 </head>
 <body>
-
 <h1  class="namer" data-firstname="Sazzad" data-lastname="Islam"></h1>
 <div ng-controller="MyController">
     <ul>
         <li ng-repeat="img in images"><img src="res/img/{{img.url}}">  {{img.nm}}</li>
     </ul>
 </div>
-
 <script>
     var APP = angular.module('APP', []);
     APP.directive('namer', function () {
