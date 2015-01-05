@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="APP">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body>
+
+<h1  class="namer" data-firstname="Sazzad" data-lastname="Islam"></h1>
+<div ng-controller="MyController">
+    <ul>
+        <li ng-repeat="img in images">{{img.nm}}</li>
+    </ul>
+</div>
+
+<script>
+    var APP = angular.module('APP', []);
+    APP.directive('namer', function () {
+        return {
+            restrict: 'C',
+            link: function (scope, e, a) {
+                scope.fullName = a.firstname + ' ' + a.lastname
+            },
+            template: "{{fullName}}"
+        }
+    });
+    function MyController($scope) {
+        $scope.images = [
+            {nm: 1, url: '1.png'},
+            {nm: 2, url: '2.png'},
+            {nm: 3, url: '3.png'},
+            {nm: 4, url: '4.png'},
+            {nm: 5, url: '5.png'}
+        ]
+    }
+    APP.controller('MyController', MyController);
+</script>
+</body>
+</html>
