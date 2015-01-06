@@ -3,4 +3,5 @@
 /.idea/workspace.xml
 .DS_Store
 /.idea/
-angularjs_test/.idea/
+angularjs_test/.idea/*
+/angularjs_test/.idea/
