@@ -1,11 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="sticker">
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <script type="text/javascript" src="angular.min.js" ></script>
 </head>
 <body>
+<div ng-controller="GreetingController">
+    <stickermarket></stickermarket>
+</div>
 
 
+<script>
+    var sticker = angular.module('sticker', []);
+    sticker.controller('GreetingController', function GreetingController($scope, $http){
+        $scope.greeting = "weerwer";
+        $http.get('data.json').success(function(data){
+            $scope.mydata = data;
+        });
+
+    });
+    sticker.directive('stickermarket', function () {
+        return {
+            restrict: 'E',
+            link: function (scope, e, a) {
+                scope.fullName = 'Sazzad'
+            },
+            templateUrl: "temp1.html"
+        }
+    });
+</script>
 </body>
 </html>
