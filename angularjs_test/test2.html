@@ -13,12 +13,23 @@
 
 <script>
     var sticker = angular.module('sticker', []);
-    sticker.controller('GreetingController', function GreetingController($scope, $http){
+    sticker.factory('marketaction', ['$http', function($http) {
+        return {
+            getsticker : function() {
+                return $http({
+                    url: 'data.json',
+                    method: 'GET'
+                })
+            }
+        }
+    }]);
+    sticker.controller('GreetingController', function GreetingController($scope, marketaction){
         $scope.greeting = "weerwer";
-        $http.get('data.json').success(function(data){
-            $scope.mydata = data;
+        marketaction.getsticker().success(function(data){
+            $scope.mydata=data;
+        }).error(function(data){
+            $scope.mydata=data;
         });
-
     });
     sticker.directive('stickermarket', function () {
         return {
